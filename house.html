@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liderhouse</title>
+  
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="responsive.css">
+  
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+
+<body>
+<form action="create.php" method="post">
+    <input type="text" name="house_name" placeholder="Название дома" required>
+    <input type="number" name="price" placeholder="Цена" required>
+    <textarea name="description" placeholder="Описание" required></textarea>
+    <input type="text" name="photo" placeholder="URL фото" required>
+    <input type="text" name="phone" placeholder="Телефон" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="submit" value="Создать объявление">
+</form>
+</body>
+</html>

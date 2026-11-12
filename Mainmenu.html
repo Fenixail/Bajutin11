@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liderhouse</title>
+  <!----======== CSS ======== -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="responsive.css">
+  
+  <!----===== Boxicons CSS ===== -->
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+
+<body>
+  <nav class="sidebar close">
+    <header>
+      <div class="image-text">
+        <span class="image">
+          <img src="logo.png" alt="">
+        </span>
+
+        <div class="text logo-text">
+          <span class="name">Liderhouse</span>
+          <span class="profession">Houses</span>
+        </div>
+      </div>
+
+      <i class='bx bx-chevron-right toggle'></i>
+    </header>
+
+    <div class="menu-bar">
+      <div class="menu">
+        <ul class="menu-links">
+          <li class="nav-link">
+            <a href="Mainmenu.html">
+              <i class='bx bx-home-alt icon'></i>
+              <span class="text nav-text">Main menu</span>
+            </a>
+          </li>
+
+          <ul class="nav-list">
+            <li class="nav-link">
+                <a href="Likes.html" class="likes">
+                    <i class='bx bx-heart icon'></i>
+                    <span class="text nav-text">Likes</span>
+                </a>
+            </li>
+
+            <li class="nav-link">
+              <a href="Recent.html">
+                  <i class='bx bx-time icon'></i>
+                  <span class="text nav-text">Recent</span>
+              </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="Create.html">
+                <i class='bx bx-plus-circle icon'></i> 
+                <span class="text nav-text">Create Announcement</span> 
+            </a>
+        </li>
+
+        <li class="nav-link">
+          <a href="Createhouse.php">
+              <i class='bx bx-home icon'></i> 
+              <span class="text nav-text">Savehouse</span> 
+          </a>
+      </li>
+
+        </ul>
+      </div>
+
+      <div class="bottom-content">
+        <li class="mode">
+          <div class="sun-moon">
+            <i class='bx bx-moon icon moon'></i>
+            <i class='bx bx-sun icon sun'></i>
+          </div>
+          <span class="mode-text text">Dark mode</span>
+
+          <div class="toggle-switch">
+            <span class="switch"></span>
+          </div>
+        </li>
+      </div>
+    </div>
+  </nav>
+
+<section class="home">
+  <div class="text">List of houses</div>
+</section>
+
+<section class="home">
+    <div class="text">List of houses</div>
+
+    <div class="property-list">
+        <div class="property">
+            <a href="Houses/house1.html"> 
+                <img src="foto/ttt.webp" alt="House 1">
+                <div class="property-info">
+                    <h3>House 1</h3>
+                    <p>Location: City A</p>
+                    <p>Price: $250,000</p>
+                </div>
+            </a>
+            <button class="like-btn" data-title="House 1" data-location="City A" data-price="$250,000" data-image-url="foto/ttt.webp" data-detail-url="Houses/house1.html">
+              ❤️
+          </button>
+        </div>
+
+        <div class="property">
+            <a href="Houses/house2.html"> 
+                <img src="foto/house2.jpg" alt="House 2">
+                <div class="property-info">
+                    <h3>House 2</h3>
+                    <p>Location: City B</p>
+                    <p>Price: $320,000</p>
+                </div>
+            </a>
+            <button class="like-btn" data-title="House 2" data-location="City B" data-price="$320,000" data-image-url="foto/house2.jpg" data-detail-url="Houses/house2.html">
+              ❤️
+          </button>
+        </div>
+
+        <div class="property">
+            <a href="Houses/house3.html">
+                <img src="foto/house3.jpg" alt="House 3">
+                <div class="property-info">
+                    <h3>House 3</h3>
+                    <p>Location: City C</p>
+                    <p>Price: $275,000</p>
+                </div>
+            </a>
+            <button class="like-btn" data-title="House 3" data-location="City C" data-price="$275,000" data-image-url="foto/house3.jpg" data-detail-url="Houses/house3.html">
+              ❤️
+          </button>
+        </div>
+        <div class="property">
+          <a href="Houses/house4.html">
+              <img src="foto/house4.jpg" alt="House 4">
+              <div class="property-info">
+                  <h3>House 4</h3>
+                  <p>Location: City D</p>
+                  <p>Price: $290,750</p>
+              </div>
+          </a>
+          <button class="like-btn" data-title="House 4" data-location="City D" data-price="$290,750" data-image-url="foto/house4.jpg" data-detail-url="Houses/house4.html">
+            ❤️
+        </button>
+      </div>
+
+      <div class="property">
+        <a href="Houses/house5.html"> 
+            <img src="foto/house5.jpg" alt="House 5">
+            <div class="property-info">
+                <h3>House 5</h3>
+                <p>Location: City E</p>
+                <p>Price: $180,000</p>
+            </div>
+        </a>
+        <button class="like-btn" data-title="House 5" data-location="City E" data-price="$180,000" data-image-url="foto/house5.jpg" data-detail-url="Houses/house5.html">
+          ❤️
+      </button>
+    </div>
+
+    <div class="property">
+        <a href="Houses/house6.html">
+          <img src="foto/house6.jpg" alt="House 6">
+          <div class="property-info">
+              <h3>House 6</h3>
+              <p>Location: City F</p>
+              <p>Price: $285,000</p>
+          </div>
+          <button class="like-btn" data-title="House 6" data-location="City F" data-price="$285,000" data-image-url="foto/house6.jpg" data-detail-url="Houses/house6.html">
+            ❤️
+        </button>
+    </div>
+
+        <div class="property">
+            <a href="Houses/house7.html"> 
+                <img src="foto/house7.jpg" alt="House 7">
+                <div class="property-info">
+                    <h3>House 7</h3>
+                    <p>Location: City G</p>
+                    <p>Price: $165,000</p>
+                </div>
+            </a>
+            <button class="like-btn" data-title="House 7" data-location="City G" data-price="$165,000" data-image-url="foto/house7.jpg" data-detail-url="Houses/house7.html">
+              ❤️
+          </button>
+        </div>
+
+        <div class="property">
+          <a href="Houses/house8.html"> 
+              <img src="foto/house8.jpg" alt="House 8">
+              <div class="property-info">
+                  <h3>House 8</h3>
+                  <p>Location: City H</p>
+                  <p>Price: $190,000</p>
+              </div>
+          </a>
+          <button class="like-btn" data-title="House 8" data-location="City H" data-price="$190,000" data-image-url="foto/house8.jpg" data-detail-url="Houses/house8.html">
+            ❤️
+        </button>
+      </div>
+
+      <div class="property">
+        <a href="Houses/house9.html"> 
+            <img src="foto/house9.jpg" alt="House 9">
+            <div class="property-info">
+                <h3>House 9</h3>
+                <p>Location: City I</p>
+                <p>Price: $200,000</p>
+            </div>
+        </a>
+        <button class="like-btn" data-title="House 9" data-location="City I" data-price="$200,000" data-image-url="foto/house9.jpg" data-detail-url="Houses/house9.html">
+          ❤️
+      </button>
+    </div>
+
+    <div class="property">
+            <a href="Houses/house10.html"> 
+                <img src="foto/house10.jpg" alt="House 10">
+                <div class="property-info">
+                    <h3>House 10</h3>
+                    <p>Location: City J</p>
+                    <p>Price: $229,000</p>
+                </div>
+            </a>
+            <button class="like-btn" data-title="House 10" data-location="City J" data-price="$229,000" data-image-url="foto/house10.jpg" data-detail-url="Houses/house10.html">
+              ❤️
+          </button>
+        </div>
+
+        <div class="property">
+          <a href="Houses/house11.html"> 
+              <img src="foto/house11.jpg" alt="House 11">
+              <div class="property-info">
+                  <h3>House 11</h3>
+                  <p>Location: City K</p>
+                  <p>Price: $232,000</p>
+              </div>
+          </a>
+          <button class="like-btn" data-title="House 11" data-location="City K" data-price="$232,000" data-image-url="foto/house11.jpg" data-detail-url="Houses/house11.html">
+            ❤️
+        </button>
+      </div>
+
+      <div class="property">
+        <a href="Houses/house12.html"> 
+            <img src="foto/house12.jpg" alt="House 12">
+            <div class="property-info">
+                <h3>House 12</h3>
+                <p>Location: City L</p>
+                <p>Price: $325,000</p>
+            </div>
+        </a>
+        <button class="like-btn" data-title="House 12" data-location="City L" data-price="$325,000" data-image-url="foto/house12.jpg" data-detail-url="Houses/house12.html">
+          ❤️
+      </button>
+    </div>
+
+    </div>
+    <script src="script.js"></script>
+</section>
+<script>
+  // Получаем ссылки на необходимые элементы
+  const body = document.querySelector('body'),
+        sidebar = body.querySelector('nav'), // Боковая панель навигации
+        toggle = body.querySelector(".toggle"), // Кнопка переключения для боковой панели
+        modeSwitch = body.querySelector(".toggle-switch"), // Переключатель режима
+        modeText = body.querySelector(".mode-text"); // Текст режима
+
+  // Проверка состояния темной темы из localStorage
+  if (localStorage.getItem('darkMode') === 'enabled') {
+      body.classList.add('dark'); // Добавляем темный класс
+      modeText.innerText = "Light mode"; // Обновляем текст режима
+  } else {
+      modeText.innerText = "Dark mode"; // Устанавливаем текст по умолчанию
+  }
+
+  // Обработчик клика для кнопки toggler
+  toggle.addEventListener("click", () => {
+      sidebar.classList.toggle("close"); // Переключаем класс close для боковой панели
+  });
+
+  // Обработчик клика для переключателя режима
+  modeSwitch.addEventListener("click", () => {
+      body.classList.toggle("dark"); // Переключаем класс dark
+
+      // Сохранение состояния темы в localStorage
+      if (body.classList.contains("dark")) {
+          modeText.innerText = "Light mode"; // Обновляем текст для света
+          localStorage.setItem('darkMode', 'enabled'); // Устанавливаем значение в localStorage
+      } else {
+          modeText.innerText = "Dark mode"; // Обновляем текст для темного режима
+          localStorage.setItem('darkMode', 'disabled'); // Отключаем значение в localStorage
+      }
+  });
+</script>
+
+  <style>
+.property a {
+    text-decoration: none; /* Убрать подчеркивание */
+    color: inherit; /* Установить цвет текста таким же, как текущий */
+}
+
+.property a:hover {
+    opacity: 0.8; /* Эффект при наведении */
+}
+    .property-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .property {
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      width: calc(33.333% - 20px); /* 3 дома в строке */
+    }
+
+    .property img {
+      width: 100%;
+      height: auto;
+    }
+
+    .property-info {
+      padding: 15px;
+    }
+
+    .property-info h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      color: var(--text-color);
+    }
+
+    .property-info p {
+      margin: 5px 0;
+      color: #666;
+    }
+    
+  </style>
+
+</body>
+
+</html>

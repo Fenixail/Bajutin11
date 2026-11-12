@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liderhouse</title>
+<!----======== CSS ======== -->
+  <link rel="stylesheet" href="style.css">
+
+  
+  <!----===== Boxicons CSS ===== -->
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+  <nav class="sidebar close">
+    <header>
+      <div class="image-text">
+        <span class="image">
+          <img src="logo.png" alt="">
+        </span>
+
+        <div class="text logo-text">
+          <span class="name">Liderhouse</span>
+          <span class="profession">Houses</span>
+        </div>
+      </div>
+
+      <i class='bx bx-chevron-right toggle'></i>
+    </header>
+
+    <div class="menu-bar">
+      <div class="menu">
+        <ul class="menu-links">
+          <li class="nav-link">
+            <a href="Mainmenu.html">
+              <i class='bx bx-home-alt icon'></i>
+              <span class="text nav-text">Main menu</span>
+            </a>
+          </li>
+
+          <ul class="nav-list">
+            <li class="nav-link">
+                <a href="Likes.html" class="likes">
+                    <i class='bx bx-heart icon'></i>
+                    <span class="text nav-text">Likes</span>
+                </a>
+            </li>
+
+            <li class="nav-link">
+              <a href="Recent.html">
+                  <i class='bx bx-time icon'></i> 
+                  <span class="text nav-text">Recent</span> 
+              </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="Create.html">
+                <i class='bx bx-plus-circle icon'></i> 
+                <span class="text nav-text">Create Announcement</span> 
+            </a>
+        </li>
+
+        <li class="nav-link">
+          <a href="Createhouse.php">
+              <i class='bx bx-home icon'></i> 
+              <span class="text nav-text">Savehouse</span> 
+          </a>
+      </li>
+
+        </ul>
+      </div>
+
+    <div class="bottom-content">
+
+      <li class="mode">
+      <div class="sun-moon">
+      <i class='bx bx-moon icon moon'></i>
+      <i class='bx bx-sun icon sun'></i>
+      </div>
+      <span class="mode-text text">Dark mode</span>
+
+      <div class="toggle-switch">
+        <span class="switch"></span>
+        </div>
+        </li>
+      </div>
+</div>
+</nav>
+<script>
+  // Получаем ссылки на необходимые элементы
+  const body = document.querySelector('body'),
+        sidebar = body.querySelector('nav'), // Боковая панель навигации
+        toggle = body.querySelector(".toggle"), // Кнопка переключения для боковой панели
+        modeSwitch = body.querySelector(".toggle-switch"), // Переключатель режима
+        modeText = body.querySelector(".mode-text"); // Текст режима
+
+  // Проверка состояния темной темы из localStorage
+  if (localStorage.getItem('darkMode') === 'enabled') {
+      body.classList.add('dark'); // Добавляем темный класс
+      modeText.innerText = "Light mode"; // Обновляем текст режима
+  } else {
+      modeText.innerText = "Dark mode"; // Устанавливаем текст по умолчанию
+  }
+
+  // Обработчик клика для кнопки toggler
+  toggle.addEventListener("click", () => {
+      sidebar.classList.toggle("close"); // Переключаем класс close для боковой панели
+  });
+
+  // Обработчик клика для переключателя режима
+  modeSwitch.addEventListener("click", () => {
+      body.classList.toggle("dark"); // Переключаем класс dark
+
+      // Сохранение состояния темы в localStorage
+      if (body.classList.contains("dark")) {
+          modeText.innerText = "Light mode"; // Обновляем текст для света
+          localStorage.setItem('darkMode', 'enabled'); // Устанавливаем значение в localStorage
+      } else {
+          modeText.innerText = "Dark mode"; // Обновляем текст для темного режима
+          localStorage.setItem('darkMode', 'disabled'); // Отключаем значение в localStorage
+      }
+  });
+</script>
+    
+<style>
+    .property a {
+        text-decoration: none; /* Убрать подчеркивание */
+        color: inherit; /* Установить цвет текста таким же, как текущий */
+    }
+    
+    .property a:hover {
+        opacity: 0.8; /* Эффект при наведении */
+    }
+        .property-list {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 20px;
+          padding: 20px;
+        }
+    
+        .property {
+          background: #fff;
+          border-radius: 8px;
+          overflow: hidden;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+          width: calc(33.333% - 20px); /* 3 дома в строке */
+        }
+    
+        .property img {
+          width: 100%;
+          height: auto;
+        }
+    
+        .property-info {
+          padding: 15px;
+        }
+    
+        .property-info h3 {
+          margin: 0 0 10px;
+          font-size: 18px;
+          color: var(--text-color);
+        }
+    
+        .property-info p {
+          margin: 5px 0;
+          color: #666;
+        }
+        
+      </style>
+  <section class="recent">
+      <h2>Недавние посещения</h2>
+      <div class="property-list" id="recent-properties">
+          <!-- Здесь будут отображаться недавние дома -->
+      </div>
+  </section>
+  <script>
+    const recentPropertiesContainer = document.getElementById('recent-properties');
+    const recentHouses = JSON.parse(localStorage.getItem('recentHouses')) || [];
+
+    // Функция для отрисовки списка
+    function renderRecentHouses() {
+        recentPropertiesContainer.innerHTML = ''; // Очистить перед отрисовкой
+
+        if (recentHouses.length > 0) {
+            recentHouses.forEach(house => {
+                const propertyDiv = document.createElement('div');
+                propertyDiv.classList.add('property');
+
+                propertyDiv.innerHTML = `
+                <a href="${house.detailUrl}">
+                    <img src="${house.imgUrl}" alt="${house.title}">
+                    <div class="property-info">
+                        <h3>${house.title}</h3>
+                        <p>Location: ${house.location}</p>
+                        <p>Price: ${house.price}</p>
+                    </div>
+                </a>
+                `;
+                recentPropertiesContainer.appendChild(propertyDiv);
+            });
+        } else {
+            recentPropertiesContainer.innerHTML;
+        }
+    }
+
+    // Изначально отрисовать
+    renderRecentHouses();
+</script>
+  <style>
+    
+    .property-list
+    {
+      margin-left: 100px;  
+    }
+    .recent h2
+  {
+    color: rebeccapurple;
+    font-size: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  </style>
+</body>
+
+</html>

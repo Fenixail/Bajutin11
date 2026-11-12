@@ -1,0 +1,112 @@
+/* Основные стили */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Заголовок */
+.header {
+    text-align: center;
+    padding: 50px;
+    background-color: #695cfe;
+
+    color: white;
+}
+
+.header h1 {
+    font-size: 2.5em;
+}
+
+.header p {
+    font-size: 1.2em;
+}
+
+/* Навигация */
+.header nav {
+    margin-top: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #5748a3; /* Более темный оттенок */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 10px 5px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #695cfe; /* Цвет при наведении */
+}
+
+/* Основное содержимое */
+.main-content {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Разделы */
+.intro, .features, .process, .testimonials {
+    margin-bottom: 40px;
+}
+
+h2 {
+    color: #695cfe;
+    font-size: 2em;
+    margin-bottom: 15px;
+}
+
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.feature {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    flex: 1;
+    min-width: 230px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.feature:hover {
+    transform: translateY(-5px);
+}
+
+.feature h3 {
+    margin-top: 10px;
+}
+
+/* Процесс */
+.process ol {
+    margin-left: 20px;
+}
+
+/* Отзывы */
+.testimonials {
+    background-color: #e4e9f7;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.testimonial {
+    margin-bottom: 15px;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #695cfe;
+    color: white;
+}

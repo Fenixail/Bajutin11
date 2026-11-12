@@ -1,0 +1,41 @@
+/* Стиль для больших экранов, например, для ПК */
+@media (min-width: 1024px) {
+    /* Ваши стили для больших экранов */
+    .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .tab {
+        min-width: 200px;
+    }
+}
+
+/* Стиль для средних экранов, например, для планшетов */
+@media (min-width: 768px) and (max-width: 1023px) {
+    /* Ваши стили для средних экранов */
+    .container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap; /* Позволяет переносить элементы на следующую строку */
+    }
+
+    .tab {
+        min-width: 150px;
+        flex: 1 1 auto; /* Позволяет вкладкам расширяться */
+    }
+}
+
+/* Стиль для маленьких экранов, например, для телефонов */
+@media (max-width: 767px) {
+    /* Ваши стили для маленьких экранов */
+    .container {
+        display: block; /* Вертикальное расположение */
+    }
+
+    .tab {
+        min-width: 100%; /* Вкладки занимают 100% ширины */
+        margin-bottom: 10px; /* Промежуток между вкладками */
+    }
+}

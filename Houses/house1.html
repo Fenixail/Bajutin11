@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liderhouse</title>
+  <!----======== CSS ======== -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="responsive.css">
+  
+  <!----===== Boxicons CSS ===== -->
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+
+<body>
+  <nav class="sidebar close">
+    <header>
+      <div class="image-text">
+        <span class="image">
+          <img src="logo.png" alt="">
+        </span>
+
+        <div class="text logo-text">
+          <span class="name">Liderhouse</span>
+          <span class="profession">Houses</span>
+        </div>
+      </div>
+
+      <i class='bx bx-chevron-right toggle'></i>
+    </header>
+
+    <div class="menu-bar">
+      <div class="menu">
+
+        <ul class="menu-links">
+          <li class="nav-link">
+            <a href="../Mainmenu.html">
+              <i class='bx bx-home-alt icon'></i>
+              <span class="text nav-text">Main menu</span>
+            </a>
+          </li>
+
+
+          <li class="nav-link">
+            <a href="../Likes.html">
+              <i class='bx bx-heart icon'></i>
+              <span class="text nav-text">Likes</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="../Recent.html">
+                <i class='bx bx-time icon'></i> 
+                <span class="text nav-text">Recent</span> 
+            </a>
+        </li>
+
+        <li class="nav-link">
+          <a href="../Create.html">
+              <i class='bx bx-plus-circle icon'></i> 
+              <span class="text nav-text">Create Announcement</span> 
+          </a>
+      </li>
+
+      <li class="nav-link">
+        <a href="../Createhouse.php">
+            <i class='bx bx-home icon'></i> 
+            <span class="text nav-text">Savehouse</span> 
+        </a>
+    </li>
+
+        </ul>
+      </div>
+
+      <div class="bottom-content">
+        <li class="mode">
+          <div class="sun-moon">
+            <i class='bx bx-moon icon moon'></i>
+            <i class='bx bx-sun icon sun'></i>
+          </div>
+          <span class="mode-text text">Dark mode</span>
+
+          <div class="toggle-switch">
+            <span class="switch"></span>
+          </div>
+        </li>
+
+      </div>
+    </div>
+
+  </nav>
+
+<div class="container">
+  <h1>Описание дома</h1>
+  <div class="slider">
+    <div class="slides" id="slides">
+      <img src="foto/ttt.webp" alt="House Image 1" class="slide">
+      <img src="foto/ttt-1.webp" alt="House Image 2" class="slide">
+      </div>
+      <button class="button left" onclick="moveSlide(-1)">&#10094;</button>
+      <button class="button right" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+
+    <div class="description">
+        <h2>Описание Дома</h2>
+        <p><strong>Местоположение:</strong> Город А</p>
+        <p><strong>Цена:</strong> $250,000</p>
+        <p><strong>Описание:</strong> Этот красивый дом расположен в тихом районе с удобным доступом к городу. Идеален для семьи с детьми благодаря близости к паркам и школам.</p>
+    </div>
+
+    <div class="contact-block">
+        <h2>Контакты</h2>
+        <p><strong>ФИО:</strong> Иванов Иван Иванович</p>
+        <p><strong>Телефон:</strong><a href="tel: +7 (999) 123-45-67"> +7 (999) 123-45-67</a></p>
+        <p><strong>Email:</strong><a href="mailto:ivan21@gmail.com"> ivan21@gmail.com</a></p>
+        <p><strong>Адрес:</strong> Город А, ул. Примерная, д. 1</p>
+    </div>
+</div>
+
+<script>
+  const houseTitle = "House 1";
+  const houseLocation = "City A"; 
+  const housePrice = "$250,000";
+  const houseImgUrl = "foto/ttt.webp";
+  const houseDetailUrl = "Houses/house1.html";
+
+  // Сохранение в localStorage
+  let recentHouses = JSON.parse(localStorage.getItem('recentHouses')) || [];
+
+  const houseData = {
+      title: houseTitle,
+      location: houseLocation,
+      price: housePrice,
+      imgUrl: houseImgUrl,
+      detailUrl: houseDetailUrl
+  };
+
+  // Проверяем, если дом уже существует в списке недавних
+  const exists = recentHouses.find(house => house.title === houseTitle);
+  if (!exists) {
+      recentHouses.push(houseData);
+      localStorage.setItem('recentHouses', JSON.stringify(recentHouses));
+  }
+</script>
+
+<script>
+    let currentSlide = 0;
+
+    function moveSlide(direction) {
+        const slides = document.getElementById('slides');
+        const totalSlides = slides.childElementCount;
+        currentSlide += direction;
+        
+        // Переход на первую или последнюю картинку в слайдере
+        if (currentSlide < 0) {
+            currentSlide = totalSlides - 1; // Вернуться к последнему слайду
+        } else if (currentSlide >= totalSlides) {
+            currentSlide = 0; // Вернуться к первому слайду
+        }
+
+        const slideWidth = slides.clientWidth;
+        slides.style.transform = 'translateX(' + (-currentSlide * slideWidth) + 'px)';
+    }
+</script>
+
+<script>
+  // Получаем ссылки на необходимые элементы
+  const body = document.querySelector('body'),
+        sidebar = body.querySelector('nav'), // Боковая панель навигации
+        toggle = body.querySelector(".toggle"), // Кнопка переключения для боковой панели
+        modeSwitch = body.querySelector(".toggle-switch"), // Переключатель режима
+        modeText = body.querySelector(".mode-text"); // Текст режима
+
+  // Проверка состояния темной темы из localStorage
+  if (localStorage.getItem('darkMode') === 'enabled') {
+      body.classList.add('dark'); // Добавляем темный класс
+      modeText.innerText = "Light mode"; // Обновляем текст режима
+  } else {
+      modeText.innerText = "Dark mode"; // Устанавливаем текст по умолчанию
+  }
+
+  // Обработчик клика для кнопки toggler
+  toggle.addEventListener("click", () => {
+      sidebar.classList.toggle("close"); // Переключаем класс close для боковой панели
+  });
+
+  // Обработчик клика для переключателя режима
+  modeSwitch.addEventListener("click", () => {
+      body.classList.toggle("dark"); // Переключаем класс dark
+
+      // Сохранение состояния темы в localStorage
+      if (body.classList.contains("dark")) {
+          modeText.innerText = "Light mode"; // Обновляем текст для света
+          localStorage.setItem('darkMode', 'enabled'); // Устанавливаем значение в localStorage
+      } else {
+          modeText.innerText = "Dark mode"; // Обновляем текст для темного режима
+          localStorage.setItem('darkMode', 'disabled'); // Отключаем значение в localStorage
+      }
+  });
+</script>
+<style>
+.container {
+        max-width: 85%; /* Максимальная ширина контейнера на 100% */
+        width: 90%; /* Задаем ширину на 90% от родительского элемента */
+        margin: 20px auto; /* Центрирование контейнера */
+        padding: 10px; /* Уменьшенные отступы внутри контейнера */
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden; /* Избегаем переполнения */
+    }
+    h1 
+    {
+      text-align: center;
+    }
+    .slider {
+        width: 100%; /* Ширина слайдера на 100% */
+    }
+    .description
+    {
+      text-align: center;
+    }
+    .contact-block
+    {
+      text-align: center;
+    }
+    .slides img 
+    {
+        width: 100%; /* Изображения занимают 100% ширины слайдера */
+        height: auto; /* Автоматическая высота для сохранения пропорций */
+}
+.description h2
+{
+  text-align: center;
+}
+</style>
+
+</body>
+
+</html>

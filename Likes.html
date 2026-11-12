@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>  
+  <title>Liderhouse</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!----======== CSS ======== -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="script.js">
+
+<!----===== Boxicons CSS ===== -->
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+    <nav class="sidebar close">
+        <header>
+          <div class="image-text">
+            <span class="image">
+              <img src="logo.png" alt="">
+            </span>
+    
+            <div class="text logo-text">
+              <span class="name">Liderhouse</span>
+              <span class="profession">Houses and apartmens</span>
+            </div>
+          </div>
+    
+          <i class='bx bx-chevron-right toggle'></i>
+        </header>
+    
+        <div class="menu-bar">
+          <div class="menu">
+            <ul class="menu-links">
+              <li class="nav-link">
+                <a href="Mainmenu.html">
+                  <i class='bx bx-home-alt icon'></i>
+                  <span class="text nav-text">Main menu</span>
+                </a>
+              </li>
+    
+              <ul class="nav-list">
+                <li class="nav-link">
+                    <a href="Likes.html" class="likes">
+                        <i class='bx bx-heart icon'></i>
+                        <span class="text nav-text">Likes</span>
+                    </a>
+                    <ul class="likes-dropdown">
+                        <!-- Здесь будут отображаться лайкнутые дома -->
+                    </ul>
+                </li>
+    
+                <li class="nav-link">
+                  <a href="Recent.html">
+                      <i class='bx bx-time icon'></i> <!-- Изменено на значок времени -->
+                      <span class="text nav-text">Recent</span> <!-- Изменил текст на более понятный -->
+                  </a>
+              </li>
+              
+              <li class="nav-link">
+                <a href="Create.html">
+                    <i class='bx bx-plus-circle icon'></i> 
+                    <span class="text nav-text">Create Announcement</span> 
+                </a>
+            </li>
+
+            <li class="nav-link">
+              <a href="Createhouse.php">
+                  <i class='bx bx-home icon'></i> 
+                  <span class="text nav-text">Savehouse</span> 
+              </a>
+          </li>
+    
+            </ul>
+          </div>
+    
+          <div class="bottom-content">
+            <li class="mode">
+              <div class="sun-moon">
+                <i class='bx bx-moon icon moon'></i>
+                <i class='bx bx-sun icon sun'></i>
+              </div>
+              <span class="mode-text text">Dark mode</span>
+    
+              <div class="toggle-switch">
+                <span class="switch"></span>
+              </div>
+            </li>
+          </div>
+        </div>
+      </nav>
+    <div id="liked-properties" class="liked-properties">
+      <h1>Ваши лайкнутые дома</h1>
+        <!-- Лайкнутые объявления будут отображаться здесь -->
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        const likedHouses = JSON.parse(localStorage.getItem('likedHouses')) || [];
+            const likedPropertiesContainer = document.getElementById('liked-properties');
+
+            if (likedHouses.length === 0) {
+                likedPropertiesContainer.innerHTML = '<p>Вы пока не лайкнули ни один дом.</p>';
+            } else {
+                likedHouses.forEach(property => {
+                    const propertyDiv = document.createElement('div');
+                    propertyDiv.classList.add('liked-property');
+
+                    const img = document.createElement('img');
+                    img.src = property.imageUrl;
+                    img.alt = property.title;
+
+                    const infoDiv = document.createElement('div');
+                    infoDiv.innerHTML = `
+                        <h3>${property.title}</h3>
+                        <p>Location: ${property.location}</p>
+                        <p>Price: ${property.price}</p>
+                    `;
+
+                    const removeButton = document.createElement('button');
+                    removeButton.textContent = 'Удалить Лайк';
+                    removeButton.classList.add('remove-btn');
+
+                    removeButton.addEventListener('click', () => {
+                        likedHouses.splice(likedHouses.indexOf(property), 1);
+                        localStorage.setItem('likedHouses', JSON.stringify(likedHouses));
+                        propertyDiv.remove(); // Удаляем элемент из DOM
+                    });
+
+                    propertyDiv.appendChild(img);
+                    propertyDiv.appendChild(infoDiv);
+                    propertyDiv.appendChild(removeButton);
+                    likedPropertiesContainer.appendChild(propertyDiv);
+                });
+            }
+        });
+    </script>
+<script>
+  // Получаем ссылки на необходимые элементы
+  const body = document.querySelector('body'),
+        sidebar = body.querySelector('nav'), // Боковая панель навигации
+        toggle = body.querySelector(".toggle"), // Кнопка переключения для боковой панели
+        modeSwitch = body.querySelector(".toggle-switch"), // Переключатель режима
+        modeText = body.querySelector(".mode-text"); // Текст режима
+
+  // Проверка состояния темной темы из localStorage
+  if (localStorage.getItem('darkMode') === 'enabled') {
+      body.classList.add('dark'); // Добавляем темный класс
+      modeText.innerText = "Light mode"; // Обновляем текст режима
+  } else {
+      modeText.innerText = "Dark mode"; // Устанавливаем текст по умолчанию
+  }
+
+  // Обработчик клика для кнопки toggler
+  toggle.addEventListener("click", () => {
+      sidebar.classList.toggle("close"); // Переключаем класс close для боковой панели
+  });
+
+  // Обработчик клика для переключателя режима
+  modeSwitch.addEventListener("click", () => {
+      body.classList.toggle("dark"); // Переключаем класс dark
+
+      // Сохранение состояния темы в localStorage
+      if (body.classList.contains("dark")) {
+          modeText.innerText = "Light mode"; // Обновляем текст для света
+          localStorage.setItem('darkMode', 'enabled'); // Устанавливаем значение в localStorage
+      } else {
+          modeText.innerText = "Dark mode"; // Обновляем текст для темного режима
+          localStorage.setItem('darkMode', 'disabled'); // Отключаем значение в localStorage
+      }
+  });
+</script>
+<style>
+    .property-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.property {
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.liked-properties {
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.liked-property {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    padding: 10px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.liked-property img {
+    max-width: 100px;
+    margin-right: 20px;
+}
+
+button {
+    margin-top: 10px;
+}
+.h1
+{
+  color: rebeccapurple;
+  text-align: center;
+}
+</style>
+</body>
+</html>
